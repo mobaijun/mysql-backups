@@ -1,0 +1,44 @@
+# MySQL配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/backups?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    win-path: C:\\mysqlbackups\\
+    linux-path: /mysql/backups/
+  # 应用名称
+  application:
+    name: MySQLBackups
+  mail:
+    host: smtp.163.com
+    port: 25
+    username:
+    password:
+    default-encoding: UTF-8
+server:
+  port: 8005
+  servlet:
+    context-path: /
+# =========自定义swagger配置========= #
+swagger:
+  enable: true
+  application-name: ${spring.application.name}
+  application-version: 1.0
+  application-description: Spring Boot整合MySQL备份Demo
+  try-host: http://localhost:${server.port}
+
+# 日志
+logging:
+  file:
+    path: logs/
+    name: backups
+
+# mapper文件地址
+mybatis-plus:
+  mapper-locations: classpath*:com/mobai/dao/**/*.xml
+  global-config:
+    db-config:
+      logic-delete-field: status
+      logic-delete-value: 1
+      logic-not-delete-value: 0
