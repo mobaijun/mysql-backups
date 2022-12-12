@@ -11,6 +11,7 @@ import com.mobai.service.SystemMysqlBackupsService;
 import com.mobai.utils.CountsUtils;
 import com.mobai.utils.ErrorTip;
 import com.mobai.utils.StringUtils;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,19 +22,17 @@ import java.util.Date;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
- * Author: https://www.mobaijun.com
+ * Author: <a href="https://www.mobaijun.com">...</a>
  * Date: 2021/12/7 14:27
  * ClassName:SystemMysqlBackupsServiceImpl
  * 类描述： 备份实现类
  */
 @Slf4j
 @Service
+@AllArgsConstructor
 public class SystemMysqlBackupsServiceImpl extends ServiceImpl<SystemMysqlBackupsMapper, SystemMysqlBackups> implements SystemMysqlBackupsService {
-
-    @Resource
-    private SystemMysqlBackupsMapper systemMysqlBackupsMapper;
-    @Resource
-    private MailService mailService;
+    private final SystemMysqlBackupsMapper systemMysqlBackupsMapper;
+    private final MailService mailService;
 
     @Override
     public Object mysqlBackups(String filePath, String url, String userName, String password) {
@@ -42,10 +41,10 @@ public class SystemMysqlBackupsServiceImpl extends ServiceImpl<SystemMysqlBackup
         // 获取端口号
         final String port = url.substring(23, 27);
         // 获取数据库名称
-        final String database_name = StringUtils.subStringDatabase(url);
+        final String databaseName = StringUtils.subStringDatabase(url);
         // 数据库文件名称
         StringBuilder mysqlFileName = new StringBuilder()
-                .append(database_name)
+                .append(databaseName)
                 .append("_")
                 .append(DateUtil.format(new Date(), "yyyy-MM-dd-HH-mm-ss"))
                 .append(CountsUtils.FILE_SUFFIX);
@@ -65,7 +64,7 @@ public class SystemMysqlBackupsServiceImpl extends ServiceImpl<SystemMysqlBackup
                 // .append(" --ignore-table ")
                 // .append(database_name)
                 // .append(".mysql_backups")
-                .append(database_name)
+                .append(databaseName)
                 .append(" > ")
                 .append(filePath)
                 .append(mysqlFileName);
@@ -76,7 +75,7 @@ public class SystemMysqlBackupsServiceImpl extends ServiceImpl<SystemMysqlBackup
         }
         // 获取操作系统名称
         String osName = System.getProperty("os.name").toLowerCase();
-        String[] command = new String[0];
+        String[] command;
         if (CountsUtils.isSystem(osName)) {
             // Windows
             command = new String[]{"cmd", "/c", String.valueOf(cmd)};
@@ -89,7 +88,7 @@ public class SystemMysqlBackupsServiceImpl extends ServiceImpl<SystemMysqlBackup
         smb.setMysqlIp(ip);
         smb.setMysqlPort(port);
         smb.setBackupsName(String.valueOf(mysqlFileName));
-        smb.setDatabaseName(database_name);
+        smb.setDatabaseName(databaseName);
         smb.setMysqlCmd(String.valueOf(cmd));
         smb.setBackupsPath(filePath);
         smb.setCreateTime(DateTime.now());
@@ -98,7 +97,7 @@ public class SystemMysqlBackupsServiceImpl extends ServiceImpl<SystemMysqlBackup
         systemMysqlBackupsMapper.insert(smb);
         log.error("数据库备份命令为：{}", cmd);
         // 获取Runtime实例
-        Process process = null;
+        Process process;
         try {
             process = Runtime.getRuntime().exec(command);
             if (process.waitFor() == 0) {
@@ -133,7 +132,7 @@ public class SystemMysqlBackupsServiceImpl extends ServiceImpl<SystemMysqlBackup
                 .append(smb.getDatabaseName())
                 .append(" < ")
                 .append(realFilePath);
-        String[] command = new String[0];
+        String[] command;
         log.error("数据库恢复命令为：{}", cmd);
         // 获取操作系统名称
         String osName = System.getProperty("os.name").toLowerCase();
@@ -150,7 +149,7 @@ public class SystemMysqlBackupsServiceImpl extends ServiceImpl<SystemMysqlBackup
         smb.setRecoveryTime(DateTime.now());
         smb.setOperation(smb.getOperation() + 1);
         // 获取Runtime实例
-        Process process = null;
+        Process process;
         try {
             process = Runtime.getRuntime().exec(command);
             if (process.waitFor() == 0) {

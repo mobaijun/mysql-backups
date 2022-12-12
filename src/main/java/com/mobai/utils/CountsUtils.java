@@ -24,6 +24,6 @@ public class CountsUtils {
         } else if (osName.startsWith("linux")) {
             flag = false;
         }
-        return flag;
+        return Boolean.TRUE.equals(flag);
     }
 }

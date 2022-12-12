@@ -32,10 +32,12 @@ import java.util.Set;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
- * Author: https://www.mobaijun.com
+ * Author: <a href="https://www.mobaijun.com">...</a>
  * Date: 2021/9/7 21:03
  * ClassName:SwaggerConfig
  * 类描述： Swagger配置类
+ *
+ * @author mobai
  */
 @Configuration
 @EnableOpenApi
@@ -50,7 +52,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
      * 5、@ApiImplicitParams：描述接口参数
      * 6、@ApiResponses：描述接口响应
      * 7、@ApiIgnore：忽略接口方法
-     * 8、访问地址：http://localhost:8082/swagger-ui/index.html#/
+     * 8、访问地址：<a href="http://localhost:8082/swagger-ui/index.html#/">...</a>
      */
     private final SwaggerProperties swaggerProperties;
 
@@ -94,8 +96,6 @@ public class SwaggerConfig implements WebMvcConfigurer {
 
     /**
      * 设置授权信息
-     *
-     * @return
      */
     private List<SecurityScheme> securitySchemes() {
         ApiKey apiKey = new ApiKey("BASE_TOKEN", "token", In.HEADER.toValue());

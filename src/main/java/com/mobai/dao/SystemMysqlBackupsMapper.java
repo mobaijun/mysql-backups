@@ -6,10 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
- * Author: https://www.mobaijun.com
+ * Author: <a href="https://www.mobaijun.com">...</a>
  * Date: 2021/12/7 14:21
  * InterfaceName:SystemMysqlBackupsMapper
  * 类描述：MySQL备份接口
+ *
+ * @author mobai
  */
 @Mapper
 public interface SystemMysqlBackupsMapper extends BaseMapper<SystemMysqlBackups> {

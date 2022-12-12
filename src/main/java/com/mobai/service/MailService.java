@@ -10,10 +10,11 @@ import javax.annotation.Resource;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
- * Author: https://www.mobaijun.com
+ * Author: <a href="https://www.mobaijun.com">...</a>
  * Date: 2021/12/7 16:13
  * InterfaceName:MailService
  * 接口描述： 邮件接口
+ * @author mobai
  */
 @Service
 public class MailService {

@@ -4,10 +4,11 @@ import org.springframework.http.HttpStatus;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
- * Author: https://www.mobaijun.com
+ * Author: <a href="https://www.mobaijun.com">...</a>
  * Date: 2021/12/7 14:33
  * ClassName:ErrorTip
  * 类描述： 错误提示
+ * @author mobai
  */
 public class ErrorTip extends Tip{
     private Object data;

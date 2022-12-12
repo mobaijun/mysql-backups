@@ -5,7 +5,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
+/**
+ * @author mobai
+ */
 @Target(ElementType.ANNOTATION_TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiJsonProperty {
@@ -34,5 +36,4 @@ public @interface ApiJsonProperty {
      * 示例
      */
     String example() default "";
-
 }

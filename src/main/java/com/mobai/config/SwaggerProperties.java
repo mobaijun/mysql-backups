@@ -6,10 +6,12 @@ import org.springframework.stereotype.Component;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
- * Author: https://www.mobaijun.com
+ * Author: <a href="https://www.mobaijun.com">...</a>
  * Date: 2021/9/7 21:03
  * ClassName:SwaggerProperties
  * 类描述： 读取配置文件类
+ *
+ * @author mobai
  */
 @Data
 @Component

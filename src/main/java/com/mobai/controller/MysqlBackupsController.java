@@ -26,14 +26,14 @@ import java.util.Map;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
- * Author: https://www.mobaijun.com
+ * Author: <a href="https://www.mobaijun.com">...</a>
  * Date: 2021/9/7 22:25
  * ClassName:MysqlBackupsController
  * 类描述： 备份控制器
  */
 
 @RestController
-@Api(description = "MySQL数据备份")
+@Api(value = "MySQL数据备份")
 @RequestMapping(value = "/system")
 public class MysqlBackupsController {
 
@@ -109,9 +109,6 @@ public class MysqlBackupsController {
             @ApiJsonProperty(name = "id", example = "1", value = "数据id", dataType = "long", required = true)})
                            @ApiParam(value = "恢复数据库") @RequestBody Map<String, Object> map) {
         Long id = Long.valueOf(map.get("id").toString());
-        if (id == null) {
-            return new ErrorTip(HttpStatus.INTERNAL_SERVER_ERROR.value(), "id不能为null，请重新尝试！");
-        }
         // 数据库用户名
         String userName = this.userName;
         // 数据库密码

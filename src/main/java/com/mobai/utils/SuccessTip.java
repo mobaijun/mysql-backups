@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * 返回给前台的成功提示
+ * @author mobai
  */
 public class SuccessTip extends Tip {
 

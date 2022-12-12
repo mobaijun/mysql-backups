@@ -5,13 +5,24 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
+/**
+ * @author mobai
+ */
 @Target({ElementType.PARAMETER, ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiJsonObject {
 
-    ApiJsonProperty[] value(); //对象属性值
+    /**
+     * 对象属性值
+     *
+     * @return ApiJsonProperty
+     */
+    ApiJsonProperty[] value();
 
-    String name();  //对象名称
-
+    /**
+     * 对象名称
+     *
+     * @return String
+     */
+    String name();
 }
