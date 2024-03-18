@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
@@ -72,24 +72,24 @@ public class SystemMysqlBackups {
      * 操作次数
      */
     @TableField("operation")
-    private Integer operation;
+    private Integer operation = 0;
 
     /**
      * 数据状态
      */
     @TableLogic
     @TableField("status")
-    private Integer status;
+    private Integer status = 1;
 
     /**
      * 恢复时间
      */
     @TableField("recovery_time")
-    private Date recoveryTime;
+    private LocalDateTime recoveryTime;
 
     /**
      * 备份时间
      */
     @TableField("create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 }

@@ -17,7 +17,7 @@ public interface SystemMysqlBackupsService extends IService<SystemMysqlBackups> 
     /**
      * mysql备份接口
      */
-    Object mysqlBackups(String filePath, String url, String userName, String password);
+    SystemMysqlBackups mysqlBackups(String filePath, String url, String userName, String password);
 
     /**
      * 恢复数据库
@@ -25,7 +25,6 @@ public interface SystemMysqlBackupsService extends IService<SystemMysqlBackups> 
      * @param smb      恢复对象
      * @param userName 数据库用户名
      * @param password 数据库密码
-     * @return
      */
-    Object rollback(SystemMysqlBackups smb, String userName, String password);
+    SystemMysqlBackups rollback(SystemMysqlBackups smb, String userName, String password);
 }
