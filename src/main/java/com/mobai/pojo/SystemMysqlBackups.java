@@ -6,9 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
-
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Software：IntelliJ IDEA 2021.2 x64
@@ -16,7 +17,9 @@ import java.time.LocalDateTime;
  * ClassName:SystemMysqlBackups
  * 类描述： MySQL备份实体
  */
-@Data
+@Getter
+@Setter
+@ToString
 @TableName("mysql_backups")
 public class SystemMysqlBackups {
 
